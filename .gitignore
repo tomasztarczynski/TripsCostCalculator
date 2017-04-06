@@ -113,3 +113,10 @@ typings/
 # dotenv environment variables file
 
 .env
+
+
+
+# IDE files
+
+/.vs
+/.vscode
