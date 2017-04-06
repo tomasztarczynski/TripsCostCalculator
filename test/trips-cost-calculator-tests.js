@@ -7,6 +7,8 @@ describe('TripCostCalculator', function () {
     it('Calculate should return sum of arguments', function () {
         var tripCostCalculator = new TripCostCalculator();
 
-        expect(tripCostCalculator.calculate(1, 1)).to.equal(2);
+        var result = tripCostCalculator.calculate(1, 1);
+
+        expect(result).to.equal(2);
     })
 });

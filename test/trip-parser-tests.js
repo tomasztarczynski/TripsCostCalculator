@@ -18,6 +18,14 @@ describe('TripParser', function () {
         };
     }
 
+    it('Should return no trips', function () {
+        var tripParser = new TripParser(createTripRowParserStub());
+
+        var parsed = tripParser.parse(null);
+
+        expect(parsed.length).to.equal(0);
+    })
+
     it('Should return one trip', function () {
         var tripParser = new TripParser(createTripRowParserStub());
 

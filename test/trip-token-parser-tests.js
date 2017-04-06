@@ -22,16 +22,12 @@ describe('TripTokenParser', function () {
         var trips = tripTokenParser.parse(text);
 
         expect(trips.length).to.equal(1);
-
-        var trip = trips[0];
-        
+        var trip = trips[0];     
         expect(trip).to.have.property('name');
         expect(trip).to.have.property('driver');
         expect(trip).to.have.property('passangers');
-        expect(trip.passangers.length).to.equal(1);
-        
+        expect(trip.passangers.length).to.equal(1);  
         var passanger = trip.passangers[0];
-
         expect(passanger).to.have.property('name');
         expect(passanger).to.have.property('divider');
     })
@@ -43,15 +39,11 @@ describe('TripTokenParser', function () {
         var trips = tripTokenParser.parse(text);
 
         expect(trips.length).to.equal(1);
-
-        var trip = trips[0];
-        
+        var trip = trips[0]; 
         expect(trip.name).to.equal('J');
         expect(trip.driver).to.equal('T');
-        expect(trip.passangers.length).to.equal(1);
-        
+        expect(trip.passangers.length).to.equal(1);   
         var passanger = trip.passangers[0];
-
         expect(passanger.name).to.equal('R');
         expect(passanger.divider).to.equal(1);
     })
@@ -61,6 +53,7 @@ describe('TripTokenParser', function () {
         var tripTokenParser = new TripTokenParser();
 
         var trips = tripTokenParser.parse(text);
+
         var trip = trips[0];
         expect(trip.passangers.length).to.equal(2);
         expect(trip.passangers[0].name).to.equal('P');
@@ -83,6 +76,7 @@ describe('TripTokenParser', function () {
         var tripTokenParser = new TripTokenParser();
 
         var trips = tripTokenParser.parse(text);
+
         var trip = trips[0];
         expect(trip.passangers[0].divider).to.equal(2);
         expect(trip.passangers[1].divider).to.equal(1);
@@ -93,6 +87,7 @@ describe('TripTokenParser', function () {
         var tripTokenParser = new TripTokenParser();
 
         var trips = tripTokenParser.parse(text);
+
         var trip = trips[0];
         expect(trip.passangers[0].divider).to.equal(1);
         expect(trip.passangers[1].divider).to.equal(2);
@@ -103,6 +98,7 @@ describe('TripTokenParser', function () {
         var tripTokenParser = new TripTokenParser();
 
         var trips = tripTokenParser.parse(text);
+
         var trip = trips[0];
         expect(trip.passangers[0].divider).to.equal(2);
         expect(trip.passangers[1].divider).to.equal(2);
@@ -113,6 +109,7 @@ describe('TripTokenParser', function () {
         var tripTokenParser = new TripTokenParser();
 
         var trips = tripTokenParser.parse(text);
+
         var trip = trips[0];
         expect(trip.name).to.equal('JwCZ');
     })
@@ -122,6 +119,7 @@ describe('TripTokenParser', function () {
         var tripTokenParser = new TripTokenParser();
 
         var trips = tripTokenParser.parse(text);
+        
         expect(trips.length).to.equal(2);
     })
 });
