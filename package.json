@@ -1,0 +1,14 @@
+{
+  "name": "trips-cost-calculator",
+  "version": "0.0.1",
+  "description": "Trips cost calculator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha tests --recursive"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0", 
+    "chai": "^3.5.0"
+  }
+}
