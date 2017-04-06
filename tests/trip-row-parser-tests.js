@@ -1,5 +1,6 @@
 'use strict';
 
+var sinon = require('sinon');
 var chai = require('chai');
 var expect = chai.expect;
 
@@ -23,8 +24,12 @@ var rows = [
 ];
 
 describe('', function () {
+    function createTripTokenParserStub (returnValue) {
+        return { parse: function () { return returnValue || []; }};
+    }
+
     it('Should return null if row contains week number', function () {
-        var tripRowParser = new TripRowParser();
+        var tripRowParser = new TripRowParser(createTripTokenParserStub());
 
         var result = tripRowParser.parse(rows[0]);
 
@@ -32,7 +37,7 @@ describe('', function () {
     })
 
     it('Should return null if row contains only whitespaces', function () {
-        var tripRowParser = new TripRowParser();
+        var tripRowParser = new TripRowParser(createTripTokenParserStub());
 
         var result = tripRowParser.parse(rows[1]);
 
@@ -40,7 +45,7 @@ describe('', function () {
     })
 
     it('Should return null if row has not trip token', function () {
-        var tripRowParser = new TripRowParser();
+        var tripRowParser = new TripRowParser(createTripTokenParserStub());
 
         var result = tripRowParser.parse(rows[2]);
 
@@ -48,7 +53,7 @@ describe('', function () {
     })
 
     it('Should return object with correct properties', function () {
-        var tripRowParser = new TripRowParser();
+        var tripRowParser = new TripRowParser(createTripTokenParserStub());
 
         var parsedTripRow = tripRowParser.parse(rows[6]);
 
@@ -59,12 +64,24 @@ describe('', function () {
     })
 
     it('Should return object with correct date', function () {
-        var tripRowParser = new TripRowParser();
+        var tripRowParser = new TripRowParser(createTripTokenParserStub());
 
         var parsedTripRow = tripRowParser.parse(rows[6]);
 
         expect(parsedTripRow.date.getFullYear()).to.equal(2017);
         expect(parsedTripRow.date.getMonth()).to.equal(1);
         expect(parsedTripRow.date.getDate()).to.equal(2);
+    })
+
+    it('Should return object with correct trips', function () {
+        var tripTxt = '$trip$';
+        var rowTxt = 'Saturday 7.1.2017:' + tripTxt;
+        var tripTokenParserStub = createTripTokenParserStub([tripTxt]);
+        var tripRowParser = new TripRowParser(tripTokenParserStub);
+            
+        var parsedTripRow = tripRowParser.parse(rowTxt);
+        
+        expect(parsedTripRow.trips.length).to.equal(1);
+        expect(parsedTripRow.trips[0]).to.equal(tripTxt);
     })
 });

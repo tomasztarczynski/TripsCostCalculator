@@ -30,7 +30,7 @@ TripRowParser.prototype.parse = function (text) {
 
         return {
             date: new Date(dateParts[2], dateParts[1], dateParts[0]),
-            trips: []
+            trips: this.tripTokenParser.parse(splited[1])
         }
     } else {
         throw new Error('Wiersz przejazdu jest niepoprawny');
