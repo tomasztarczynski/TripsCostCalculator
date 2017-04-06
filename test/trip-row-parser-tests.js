@@ -13,17 +13,17 @@ var rows = [
     '',
     '##### 2 #####',
     '',
-    'Monday 2.1.2017: J|P/2,R/2',
-    'Tuesday 3.1.2017:JwA|R',
-    'Wednesday 4.1.2017: CZ|R',
-    'Thursday 5.1.2017: JwCZ|R',
-    'Friday 6.1.2017: J|RT',
+    'Monday 2.1.2017: J!T#P/2.R/2',
+    'Tuesday 3.1.2017: JwA!T#R',
+    'Wednesday 4.1.2017: CZ!T#R',
+    'Thursday 5.1.2017: JwCZ!T#R',
+    'Friday 6.1.2017: J!P#R.T',
     '',
     'Saturday 7.1.2017:',
     'Sunday 8.1.2017:'
 ];
 
-describe('', function () {
+describe('TripRowParser', function () {
     function createTripTokenParserStub (returnValue) {
         return { parse: function () { return returnValue || []; }};
     }
