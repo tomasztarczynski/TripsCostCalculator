@@ -1,10 +1,12 @@
 'use strict';
 
-function TripCostCalculator () {
+function TripCostCalculator (personRepository, tripRepository) {
+    this.personRepository = personRepository;
+    this.tripRepository = tripRepository;
 }
 
-TripCostCalculator.prototype.calculate = function (a, b) {
-    return a + b;
+TripCostCalculator.prototype.calculate = function (trips) {
+
 }
 
 module.exports = TripCostCalculator;

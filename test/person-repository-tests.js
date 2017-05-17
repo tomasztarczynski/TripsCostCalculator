@@ -14,9 +14,7 @@ describe('PersonRepository', function () {
 
         expect(person).to.equal(null);
     })
-});
 
-describe('PersonRepository', function () {
     it('Should return correct person by id', function () {
         var id = 'T';
         var personRepository = new PersonRepository([{id: id}]);

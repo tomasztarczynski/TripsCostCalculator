@@ -3,6 +3,7 @@
 var TripTokenParser = require('./src/trip-token-parser');
 var TripRowParser = require('./src/trip-row-parser');
 var TripParser = require('./src/trip-parser');
+var TripCostCalculator = require('./src/trips-cost-calculator');
 
 const util = require('util')
 
@@ -30,5 +31,13 @@ var tripRowParser = new TripRowParser(tripTokenParser);
 var tripParser = new TripParser(tripRowParser);
 
 var trips = tripParser.parse(rawTrips);
-
 console.log(util.inspect(trips, false, null))
+
+var tripCostCalculator = new TripCostCalculator();
+var result = tripCostCalculator.calculate(trips);
+console.log(util.inspect(result, false, null));
+
+
+
+
+

@@ -14,9 +14,7 @@ describe('TripRepository', function () {
 
         expect(trip).to.equal(null);
     })
-});
 
-describe('TripRepository', function () {
     it('Should return correct trip by id', function () {
         var id = 'J';
         var tripRepository = new TripRepository([{id: id}]);
