@@ -6,7 +6,7 @@ function TripCostCalculator (personRepository, tripRepository) {
 }
 
 TripCostCalculator.prototype.calculate = function (trips) {
-
+    
 }
 
 module.exports = TripCostCalculator;
