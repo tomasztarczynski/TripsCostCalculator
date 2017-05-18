@@ -4,91 +4,104 @@ var expect = chai.expect;
 var TripCountCalculator = require('./../src/trip-count-calculator');
 
 var trips = [{
-    "date": new Date("2017-02-01T23:00:00.000Z"),
-    "trips": [{
-        "name": "J",
-        "driver": "T",
-        "passangers": [{
-            "name": "P",
-            "divider": 2
+    date: new Date('2017-02-01T23:00:00.000Z'),
+    trips: [{
+        name: 'J',
+        driver: 'P',
+        passangers: [{
+            name: 'R',
+            divider: 1
         }, {
-            "name": "R",
-            "divider": 2
+            name: 'T',
+            divider: 1
         }]
     }]
 }, {
-    "date": new Date("2017-02-02T23:00:00.000Z"),
-    "trips": [{
-        "name": "JwA",
-        "driver": "T",
-        "passangers": [{
-            "name": "R",
-            "divider": 1
-        }]
-    }]
-}, {
-    "date": new Date("2017-02-03T23:00:00.000Z"),
-    "trips": [{
-        "name": "CZ",
-        "driver": "T",
-        "passangers": [{
-            "name": "R",
-            "divider": 1
-        }]
-    }]
-}, {
-    "date": new Date("2017-02-04T23:00:00.000Z"),
-    "trips": [{
-        "name": "JwCZ",
-        "driver": "T",
-        "passangers": [{
-            "name": "R",
-            "divider": 1
-        }]
-    }]
-}, {
-    "date": new Date("2017-02-05T23:00:00.000Z"),
-    "trips": [{
-        "name": "J",
-        "driver": "P",
-        "passangers": [{
-            "name": "R",
-            "divider": 1
+    date: new Date('2017-02-02T23:00:00.000Z'),
+    trips: [{
+        name: 'J',
+        driver: 'R',
+        passangers: [{
+            name: 'P',
+            divider: 1
         }, {
-            "name": "T",
-            "divider": 1
+            name: 'T',
+            divider: 1
+        }]
+    }, {
+        name: 'J',
+        driver: 'R',
+        passangers: [{
+            name: 'P',
+            divider: 1
+        }, {
+            name: 'T',
+            divider: 1
+        }]
+    }]
+}, {
+    date: new Date('2017-02-03T23:00:00.000Z'),
+    trips: [{
+        name: 'J',
+        driver: 'T',
+        passangers: [{
+            name: 'P',
+            divider: 1
+        }, {
+            name: 'R',
+            divider: 1
+        }]
+    }, {
+        name: 'J',
+        driver: 'T',
+        passangers: [{
+            name: 'P',
+            divider: 1
+        }, {
+            name: 'R',
+            divider: 1
+        }]
+    }, {
+        name: 'J',
+        driver: 'T',
+        passangers: [{
+            name: 'P',
+            divider: 1
+        }, {
+            name: 'R',
+            divider: 1
         }]
     }]
 }];
 
-var tripId = "J";
+var tripId = 'J';
 
 var expectedResult = [{
-    "driver": "P",
-    "counts": [{
-        "passanger": "R",
-        "count": "?"
+    driver: 'P',
+    counts: [{
+        passanger: 'R',
+        count: 1
     }, {
-        "passanger": "T",
-        "count": "?"
+        passanger: 'T',
+        count: 1
     }]
 }, {
-    "driver": "R",
-    "counts": [{
-        "passanger": "P",
-        "count": "?"
+    driver: 'R',
+    counts: [{
+        passanger: 'P',
+        count: 2
     }, {
-        "passanger": "T",
-        "count": "?"
+        passanger: 'T',
+        count: 2
     }]
 }, {
-    "driver": "T",
-    "counts": [{
-        "passanger": "P",
-        "count": "?"
+    driver: 'T',
+    counts: [{
+        passanger: 'P',
+        count: 3
     }, {
-        "passanger": "R",
-        "count": "?"
+        passanger: 'R',
+        count: '3'
     }]
 }];
 
