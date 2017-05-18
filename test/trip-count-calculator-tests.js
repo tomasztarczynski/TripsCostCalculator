@@ -78,7 +78,7 @@ var expectedResult = [{
         "passanger": "P",
         "count": "?"
     }, {
-        "passanger": "P",
+        "passanger": "T",
         "count": "?"
     }]
 }, {
@@ -92,14 +92,26 @@ var expectedResult = [{
     }]
 }];
 
-var result = expectedResult;
-
 describe('TripCountCalculator', function () {
     it('Should return correct number of drivers', function () {
+        // Given
+        var tripCountCalculator = new TripCountCalculator();
+
+        // When
+        var result = tripCountCalculator.calculate(trips, tripId);
+
+        // Then
         expect(result.length).to.equal(expectedResult.length);
     })
 
-    it('Should contains correct drivers ids', function () {
+    it('Should return correct drivers ids', function () {
+        // Given
+        var tripCountCalculator = new TripCountCalculator();
+
+        // When
+        var result = tripCountCalculator.calculate(trips, tripId);
+
+        // Then
         var expectedDriverIds = expectedResult.map(function(value) {
             return value.driver;
         })
@@ -109,5 +121,170 @@ describe('TripCountCalculator', function () {
         })
 
         expect(driversIds).to.eql(expectedDriverIds);
+    })
+
+    it('Should return correct counts length #1', function () {
+        // Given
+        var drivierId = 'P';
+        var tripCountCalculator = new TripCountCalculator();
+
+        // When
+        var result = tripCountCalculator.calculate(trips, tripId);
+
+        // Then
+        var actual = result.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        var expected = expectedResult.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        expect(actual.counts.length).to.equal(expected.counts.length)
+    })
+
+    it('Should return correct counts length #2', function () {
+        // Given
+        var drivierId = 'R';
+        var tripCountCalculator = new TripCountCalculator();
+
+        // When
+        var result = tripCountCalculator.calculate(trips, tripId);
+
+        // Then
+        var actual = result.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        var expected = expectedResult.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        expect(actual.counts.length).to.equal(expected.counts.length)
+    })
+
+    it('Should return correct counts length #3', function () {
+        // Given
+        var drivierId = 'T';
+        var tripCountCalculator = new TripCountCalculator();
+
+        // When
+        var result = tripCountCalculator.calculate(trips, tripId);
+
+        // Then
+        var actual = result.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        var expected = expectedResult.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        expect(actual.counts.length).to.equal(expected.counts.length)
+    })
+
+    it('Should return correct counts #1', function () {
+        // Given
+        var drivierId = 'P';
+        var tripCountCalculator = new TripCountCalculator();
+
+        // When
+        var result = tripCountCalculator.calculate(trips, tripId);
+
+        // Then
+        var actual = result.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        var expected = expectedResult.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        function findCountsByPassangerId (passangerId) {
+            return {
+                actualPassanger: actual.counts.find(function (value) {
+                    return value.passanger === passangerId;
+                }),
+                expectedPassanger: expected.counts.find(function (value) {
+                    return value.passanger === passangerId;
+                })
+            }
+        }
+
+        var rPassanger = findCountsByPassangerId('R');
+        var tPassanger = findCountsByPassangerId('T');
+
+        expect(rPassanger.actualPassanger.count).to.equal(rPassanger.expectedPassanger.count);
+        expect(tPassanger.actualPassanger.count).to.equal(tPassanger.expectedPassanger.count);
+    })
+
+    it('Should return correct counts #2', function () {
+        // Given
+        var drivierId = 'R';
+        var tripCountCalculator = new TripCountCalculator();
+
+        // When
+        var result = tripCountCalculator.calculate(trips, tripId);
+
+        // Then
+        var actual = result.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        var expected = expectedResult.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        function findCountsByPassangerId (passangerId) {
+            return {
+                actualPassanger: actual.counts.find(function (value) {
+                    return value.passanger === passangerId;
+                }),
+                expectedPassanger: expected.counts.find(function (value) {
+                    return value.passanger === passangerId;
+                })
+            }
+        }
+
+        var pPassanger = findCountsByPassangerId('P');
+        var tPassanger = findCountsByPassangerId('T');
+
+        expect(pPassanger.actualPassanger.count).to.equal(pPassanger.expectedPassanger.count);
+        expect(tPassanger.actualPassanger.count).to.equal(tPassanger.expectedPassanger.count);
+    })
+
+    it('Should return correct counts #3', function () {
+        // Given
+        var drivierId = 'T';
+        var tripCountCalculator = new TripCountCalculator();
+
+        // When
+        var result = tripCountCalculator.calculate(trips, tripId);
+
+        // Then
+        var actual = result.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        var expected = expectedResult.find(function (value) {
+            return value.driver === drivierId;
+        });
+
+        function findCountsByPassangerId (passangerId) {
+            return {
+                actualPassanger: actual.counts.find(function (value) {
+                    return value.passanger === passangerId;
+                }),
+                expectedPassanger: expected.counts.find(function (value) {
+                    return value.passanger === passangerId;
+                })
+            }
+        }
+
+        var pPassanger = findCountsByPassangerId('P');
+        var rPassanger = findCountsByPassangerId('R');
+
+        expect(pPassanger.actualPassanger.count).to.equal(pPassanger.expectedPassanger.count);
+        expect(rPassanger.actualPassanger.count).to.equal(rPassanger.expectedPassanger.count);
     })
 });

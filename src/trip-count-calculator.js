@@ -1,11 +1,9 @@
 'use strict';
 
-function TripCountCalculator (personRepository, tripRepository) {
-    this.personRepository = personRepository;
-    this.tripRepository = tripRepository;
+function TripCountCalculator () {
 }
 
-TripCountCalculator.prototype.calculate = function (trips) {
+TripCountCalculator.prototype.calculate = function (trips, tripId) {
     
 }
 
