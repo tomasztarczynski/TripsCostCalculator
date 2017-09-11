@@ -2,6 +2,11 @@
   "name": "trips-cost-calculator",
   "version": "0.0.1",
   "description": "Trips cost calculator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomasztarczynski/TripsCostCalculator.git"
+  },
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
